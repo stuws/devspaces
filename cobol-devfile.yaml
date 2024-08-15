@@ -9,18 +9,6 @@ metadata:
   projectType: COBOL
   language: IBM COBOL
   version: 1.0.0
-attributes:
-  {
-    "recommendations": [
-      "barrettotte.ibmi-languages",
-      "halcyontechltd.code-for-ibmi",
-      "halcyontechltd.vscode-ibmi-walkthroughs",
-      "halcyontechltd.vscode-db2i",
-      "halcyontechltd.vscode-displayfile",
-      "halcyontechltd.vscode-rpgle",
-      "wayou.vscode-todo-highlight"
-    ]
-  }
 components:
   - name: cobol-workspace
     container:

@@ -1,0 +1,40 @@
+schemaVersion: 2.2.2
+metadata:
+  name: cobol-devspace
+  displayName: IBM COBOL
+  description: IBM COBOL development space
+  tags:
+    - cobol
+    - class
+  projectType: COBOL
+  language: IBM COBOL
+  version: 1.0.0
+attributes:
+  .vscode/extensions.json: |
+    {
+      "recommendations": [
+        "barrettotte.ibmi-languages",
+        "halcyontechltd.code-for-ibmi",
+        "halcyontechltd.vscode-ibmi-walkthroughs",
+        "halcyontechltd.vscode-db2i",
+        "halcyontechltd.vscode-displayfile",
+        "halcyontechltd.vscode-rpgle",
+        "wayou.vscode-todo-highlight"
+      ]
+    }
+components:
+  - name: cobol-workspace
+    container:
+      image: registry.redhat.io/devspaces/udi-rhel8@sha256:bc5d28c434089a312ab0944662e7702481ca4e898ef278cf61c0f683f35718df
+commands:
+  - id: update-extensions
+    exec:
+      component: cobol-workspace
+      commandLine: 'code-oss --update-extensions'
+  - id: git-config
+    exec:
+      component: cobol-workspace
+      commandLine: '/bin/bash /etc/config/git-config/git-config.sh'
+events:
+  postStart:
+    - git-config

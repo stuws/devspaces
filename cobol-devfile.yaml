@@ -10,15 +10,7 @@ metadata:
   language: IBM COBOL
   version: 1.0.0
 variables:
-  gitConfigScript: |-
-    #!/bin/bash
-    export GIT_PAT=$(cat /.git-credentials/credentials | awk -F "[:@]" '{print $3}')
-    export GIT_EMAIL=$(curl -s -L -H "Accept: application/vnd.github+json" -H "Authorization: Bearer $GIT_PAT" -H "X-GitHub-Api-Version: 2022-11-28" https://api.github.com/user/emails | jq -r ".[0].email")
-    export GIT_USER=$(curl -s -L -H "Accept: application/vnd.github+json" -H "Authorization: Bearer $GIT_PAT" -H "X-GitHub-Api-Version: 2022-11-28" https://api.github.com/user | jq -r ".name")
-    echo "Setting git user.name=$GIT_USER"
-    git config --global user.name "$GIT_USER"
-    echo "Setting git user.email=$GIT_EMAIL"
-    git config --global user.email "$GIT_EMAIL"
+  gitConfigScript: IyEvYmluL2Jhc2gKZXhwb3J0IEdJVF9QQVQ9JChjYXQgLy5naXQtY3JlZGVudGlhbHMvY3JlZGVudGlhbHMgfCBhd2sgLUYgIls6QF0iICd7cHJpbnQgJDN9JykKZXhwb3J0IEdJVF9FTUFJTD0kKGN1cmwgLXMgLUwgLUggIkFjY2VwdDogYXBwbGljYXRpb24vdm5kLmdpdGh1Yitqc29uIiAtSCAiQXV0aG9yaXphdGlvbjogQmVhcmVyICRHSVRfUEFUIiAtSCAiWC1HaXRIdWItQXBpLVZlcnNpb246IDIwMjItMTEtMjgiIGh0dHBzOi8vYXBpLmdpdGh1Yi5jb20vdXNlci9lbWFpbHMgfCBqcSAtciAiLlswXS5lbWFpbCIpCmV4cG9ydCBHSVRfVVNFUj0kKGN1cmwgLXMgLUwgLUggIkFjY2VwdDogYXBwbGljYXRpb24vdm5kLmdpdGh1Yitqc29uIiAtSCAiQXV0aG9yaXphdGlvbjogQmVhcmVyICRHSVRfUEFUIiAtSCAiWC1HaXRIdWItQXBpLVZlcnNpb246IDIwMjItMTEtMjgiIGh0dHBzOi8vYXBpLmdpdGh1Yi5jb20vdXNlciB8IGpxIC1yICIubmFtZSIpCmVjaG8gIlNldHRpbmcgZ2l0IHVzZXIubmFtZT0kR0lUX1VTRVIiCmdpdCBjb25maWcgLS1nbG9iYWwgdXNlci5uYW1lICIkR0lUX1VTRVIiCmVjaG8gIlNldHRpbmcgZ2l0IHVzZXIuZW1haWw9JEdJVF9FTUFJTCIKZ2l0IGNvbmZpZyAtLWdsb2JhbCB1c2VyLmVtYWlsICIkR0lUX0VNQUlMIgo=
 components:
   - name: cobol-workspace
     container:

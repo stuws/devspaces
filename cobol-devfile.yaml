@@ -23,7 +23,7 @@ commands:
   - id: git-config
     exec:
       component: cobol-workspace
-      commandLine: 'echo "{{gitConfigScript}}" >> ~/git-config.sh && chmod +x ~/git-config.sh && ~/git-config.sh'
+      commandLine: 'echo {{gitConfigScript}} | base64 -d >> ~/git-config.sh && chmod +x ~/git-config.sh && ~/git-config.sh'
 events:
   postStart:
     - git-config

@@ -9,6 +9,8 @@ metadata:
   projectType: COBOL
   language: IBM COBOL
   version: 1.0.0
+variables:
+  gitConfigScript: IyEvYmluL2Jhc2gKZXhwb3J0IEdJVF9QQVQ9JChjYXQgLy5naXQtY3JlZGVudGlhbHMvY3JlZGVudGlhbHMgfCBhd2sgLUYgIls6QF0iICd7cHJpbnQgJDN9JykKZXhwb3J0IEdJVF9FTUFJTD0kKGN1cmwgLXMgLUwgLUggIkFjY2VwdDogYXBwbGljYXRpb24vdm5kLmdpdGh1Yitqc29uIiAtSCAiQXV0aG9yaXphdGlvbjogQmVhcmVyICRHSVRfUEFUIiAtSCAiWC1HaXRIdWItQXBpLVZlcnNpb246IDIwMjItMTEtMjgiIGh0dHBzOi8vYXBpLmdpdGh1Yi5jb20vdXNlci9lbWFpbHMgfCBqcSAtciAiLlswXS5lbWFpbCIpCmV4cG9ydCBHSVRfVVNFUj0kKGN1cmwgLXMgLUwgLUggIkFjY2VwdDogYXBwbGljYXRpb24vdm5kLmdpdGh1Yitqc29uIiAtSCAiQXV0aG9yaXphdGlvbjogQmVhcmVyICRHSVRfUEFUIiAtSCAiWC1HaXRIdWItQXBpLVZlcnNpb246IDIwMjItMTEtMjgiIGh0dHBzOi8vYXBpLmdpdGh1Yi5jb20vdXNlciB8IGpxIC1yICIubmFtZSIpCmVjaG8gIlNldHRpbmcgZ2l0IHVzZXIubmFtZT0kR0lUX1VTRVIiCmdpdCBjb25maWcgLS1nbG9iYWwgdXNlci5uYW1lICRHSVRfVVNFUgplY2hvICJTZXR0aW5nIGdpdCB1c2VyLmVtYWlsPSRHSVRfRU1BSUwiCmdpdCBjb25maWcgLS1nbG9iYWwgdXNlci5lbWFpbCAkR0lUX0VNQUlMCg==
 components:
   - name: cobol-workspace
     container:
@@ -21,7 +23,7 @@ commands:
   - id: git-config
     exec:
       component: cobol-workspace
-      commandLine: '/bin/bash /etc/config/git-config/git-config.sh'
+      commandLine: 'echo {{gitConfigScript}} | base64 -d >> ~/git-config.sh && chmod +x ~/git-config.sh && ~/git-config.sh'
 events:
   postStart:
     - git-config
